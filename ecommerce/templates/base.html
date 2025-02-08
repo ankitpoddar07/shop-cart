@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>
+    {% block title %}{% endblock title %}
+  </title>
+  <meta name="description" content="ecommerce website we deliver products in 1 hour">
+  <meta name="keywords" content="amazon, flipkart, selling, products, ecommerce">
+
+  <!-- Fav icons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+</head>
+
+<body class="index-page">
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="{% static '/assets/img/logo2.png' %}" alt=""> 
+        <h1 class="sitename">Shop Cart</h1>
+      </a>
+      <!-- Navbar -->
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="/" class="active">Home  <i class="fa-solid fa-house-user"></i></a></li>
+          <li><a href="/about">About  <i class="fa-solid fa-circle-question"></i></a></li>
+          <!-- Uncomment these lines later -->
+          <!--
+          <li><a href="/services">Services</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
+          <li><a href="/team">Team</a></li>
+          -->
+          <li><a href="/blog">Blog <i class="fa-solid fa-blog"></i></a></li>
+          <li><a href="/checkout">Checkout <i class="fa-solid fa-bag-shopping"></i></a></li>
+          <li><a href="/profile">Profile <i class="fa-solid fa-user"></i></a></li>
+
+          <button type="button" class="btn btn-danger d-flex align-items-center justify-content-center text-white p-2 p-md-3 m-1 m-md-2 w-100 w-md-auto" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" style="border-radius: 50px;"><i class="fa-solid fa-cart-shopping me-2"></i> Cart (<span id="cart">0</span>)</button>
+
+          {% if  request.user.is_authenticated %}
+          <li><a class="dropdown" href="/auth/logout/">LOG OUT <i class="fa-solid fa-right-from-bracket"></i></a></li>
+          <!--  {{user.username}}  # Remove comment if you want username in navbar.....   -->
+          {% else %}         
+          <li class="dropdown"><a href="#"><span>Sign In</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>              
+            <li><a href="/auth/signup/">SIGN UP <i class="fa-solid fa-user-plus"></i></a></li>
+            <li><a href="/auth/login/">LOG IN <i class="fa-regular fa-face-laugh-beam"></i></a></li>            
+            </ul>
+          </li>
+          {% endif %}
+
+          
+          <li><a class="nav-link scrollto bg-dark p-3 m-1" style="border-radius: 50px;" href="/contact">Contact <i class="fa-solid fa-id-badge"></i></a></li>          
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+  <!-- End Header -->
+  
+  <main class="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <img src="{% static 'assets/img/hero-bg.jpg' %}" alt="" data-aos="fade-in">
+      <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+          {% block content %}
+          
+          {% endblock content %}
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero Section -->
+
+    {% block body %}  {% endblock body %}
+    {% block banner_slider %} {% endblock banner_slider %}
+    
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="/" class="logo d-flex align-items-center">
+            <span class="sitename">Shop Cart</span>
+          </a>
+          <p>Shop cart Private Limited is an Indian e-commerce company, headquartered in Bangalore, and incorporated in Singapore as a private limited company. The company initially focused on online
+            book sales before expanding into other product categories such as consumer electronics, fashion, home essentials, groceries, and lifestyle products.</p>
+          <div class="social-links d-flex mt-4">
+            <a href="https://x.com/ankitpo47153377"><i class="bi bi-twitter"></i></a>
+            <a href="https://github.com/ankitpoddar07"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/ankitpoddar_"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/ankit-kumar271a3730b"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About us</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/service">Service</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>A108 Adam Street</p>
+          <p>New York, NY 535022</p>
+          <p>United States</p>
+          <p class="mt-4"><strong>Phone :</strong> + 8409755322</p>
+          <p><strong>Email :</strong>  ankitkumarpoddar07@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">SHOP CART</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Designed by <a href="https://www.instagram.com/ankitpoddar_">ANKIT KUMAR</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="https://kit.fontawesome.com/dcd30a2475.js" crossorigin="anonymous"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

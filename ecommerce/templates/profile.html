@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+
+<h1>Welcome to shop cart <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></h1><br><br><br><br>
+<h2>Here's your Profile
+
+{% endblock content %}
+
+{% block body %}
+
+<!-- Profile Section -->
+<section id="profile" class="profile section py-5">
+    <div class="container">
+        <!-- Section Title -->
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+            <h1 class="fw-bold display-6">My Profile</h1>
+            <p class="text-muted">Here are the details of your orders and their status.</p>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="table-responsive" data-aos="fade-up">
+            <table class="table table-bordered table-hover shadow-sm rounded-3 align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Products</th>
+                        <th scope="col">Amount Paid</th>
+                        <th scope="col">Payment Status</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Delivery Status</th>
+                        <th scope="col">Delivered</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in items %}
+                    <tr class="align-middle">
+                        <th scope="row">{{ i.oid }}</th>
+                        <td>{{ i.name }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#products-{{ forloop.counter }}" aria-expanded="false" aria-controls="products-{{ forloop.counter }}">
+                                View Products
+                            </button>
+                            <div class="collapse mt-2" id="products-{{ forloop.counter }}">
+                                <pre class="bg-light p-2 rounded">{{ i.items_json }}</pre>
+                            </div>
+                        </td>
+                        <td>₹{{ i.amount }}</td>
+                        <td>
+                            {% if i.paymentstatus == "PAID" %}
+                            <span class="badge bg-success">Paid</span>
+                            {% else %}
+                            <span class="badge bg-danger">Unpaid</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ i.address1 }}</td>
+                        <td>{{ i.phone }}</td>
+                        <td>
+                            {% for j in status %}
+                            {{ j.update_desc }}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for j in status %}
+                            {% if j.delivered %}
+                            <span class="text-success"><i class="fa-solid fa-circle-check"></i> Delivered</span>
+                            {% else %}
+                            <span class="text-warning"><i class="fa-solid fa-truck"></i> Not Delivered</span>
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for j in status %}
+                            {{ j.timestam }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="10" class="text-muted">No orders found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

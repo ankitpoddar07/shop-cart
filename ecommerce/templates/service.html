@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %} Services {% endblock title %}
+{% block content %}
+<br><br>
+<h1>SERVICES</h1><br>
+<p>E-Cart services help businesses set up and run online stores. These services include website design, payment processing, inventory management, customer support, and more.</p>
+<i class="fa-solid fa-heart-circle-plus"></i> --
+<a href="#" class="btn-get-started">Move Down <i class="fa-solid fa-blog"></i></a> -- <i class="fa-solid fa-circle-down"></i>
+
+{% endblock content %}
+{% load static %}
+{% block body %}
+
+<body class="blog-page" data-aos="fade-up">
+    <main class="main" data-aos="fade-up">
+
+        <!-- Page Title -->
+        <div class="page-title dark-background" style="background-image: url('{% static 'assets/img/page-title-bg.webp' %}');">
+            <div class="container position-relative">
+                <h1>Service Details</h1>
+                <p>E-commerce services are tools and solutions that help businesses sell products online.</p>
+                <nav class="breadcrumbs">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="current">Service Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div><!-- End Page Title -->
+
+        <!-- Service Details Section -->
+        <section id="service-details" class="service-details section">
+            <div class="container">
+                <div class="row gy-5">
+                    <!-- Sidebar (Left Column) -->
+                    <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
+                        <!-- Services List -->
+                        <div class="service-box">
+                            <h4>Services List</h4>
+                            <div class="services-list">
+                                <a href="#" class="active"><i class="bi bi-arrow-right-circle"></i><span>Web Design</span></a>
+                                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Web Development</span></a>
+                                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Product Management</span></a>
+                                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Graphic Design</span></a>
+                                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Marketing</span></a>
+                            </div>
+                        </div><!-- End Services List -->
+
+                        <!-- Download Catalog -->
+                        <div class="service-box">
+                            <h4>Download Catalog</h4>
+                            <div class="download-catalog">
+                                <a href="#"><i class="bi bi-filetype-pdf"></i><span>Catalog PDF</span></a>
+                                <a href="#"><i class="bi bi-file-earmark-word"></i><span>Catalog DOC</span></a>
+                            </div>
+                        </div><!-- End Download Catalog -->
+
+                        <!-- Help Box -->
+                        <div class="help-box d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-headset help-icon"></i>
+                            <h4>Have a Question?</h4>
+                            <p class="d-flex align-items-center mt-2 mb-0">
+                                <i class="bi bi-telephone me-2"></i>
+                                <span>+91 8409 755 322</span>
+                            </p>
+                            <p class="d-flex align-items-center mt-1 mb-0">
+                                <i class="bi bi-envelope me-2"></i>
+                                <a href="mailto:contact@example.com">ankitkumarpoddar07@gmail.com</a>
+                            </p>
+                        </div><!-- End Help Box -->
+                    </div>
+
+                    <!-- Main Content (Right Column) -->
+                    <div class="col-lg-8 ps-lg-5" data-aos="fade-left" data-aos-delay="200">
+                        <!-- Service Image -->
+                        <img src="{% static 'assets/img/services.jpg' %}" alt="Service Image" class="img-fluid services-img">
+                        <h3>Services include platforms for building online stores, processing payments, managing inventory, shipping products, marketing, and providing customer support.</h3>
+                        <p>
+                            Ecommerce is the electronic buying and selling of goods and services, usually via the internet. Businesses can build their own ecommerce website, set up an ecommerce storefront on an established selling site like Amazon, or do it all for a multi-channel approach.
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-check-circle"></i> <span>Outsourcing 24/7 customer support </span></li>
+                            <li><i class="bi bi-check-circle"></i> <span>Check payments & Return Payments on time</span></li>
+                            <li><i class="bi bi-check-circle"></i> <span>Fully Trusted</span></li>
+                        </ul>
+                        <p>
+                            The online services can be paid service or free services to the users. These online services are given to subscribers through applications and websites. Some paid services include Netflix and Amazon Prime, and free services include Wikipedia, Google Maps, and Google Calendar.
+                        </p>
+                        <p>
+                            Ecommerce services cover consulting, online store development, integration, and support, all aimed at helping merchants ensure the success of their new or existing ecommerce store.
+
+                            Itransition offers a full scope of ecommerce services, enabling our clients to establish a solid digital presence, better engage with customers, and drive more sales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /Service Details Section -->
+    </main>
+</body>
+
+{% endblock body %}
